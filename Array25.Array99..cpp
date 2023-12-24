@@ -4,22 +4,24 @@
 
 using namespace std;
 
+// Функція для перевірки чи є послідовність геометричною прогресією
 bool isGeometricProgression(vector<int>& arr) {
     if (arr.size() <= 2) {
-        return true;
+        return true; // Якщо масив має менше або рівно 2 елементів, то це геометрична прогресія
     }
 
-    int ratio = arr[1] / arr[0];
+    int ratio = arr[1] / arr[0]; // Визначення знаменника прогресії
 
     for (size_t i = 2; i < arr.size(); ++i) {
         if (arr[i] / arr[i - 1] != ratio) {
-            return false;
+            return false; // Перевірка чи кожний наступний елемент утворює геометричну прогресію
         }
     }
 
     return true;
 }
 
+// Функція для обробки масиву
 void processArray(vector<int>& arr) {
     // Видалення елементів, що зустрічаються більше двох разів
     unordered_map<int, int> countMap;
@@ -70,50 +72,11 @@ int main() {
 
         switch (choice) {
             case 1: {
-                int N;
-                cout << "Введіть розмір масиву: ";
-                cin >> N;
-
-                vector<int> array(N);
-
-                cout << "Введіть елементи масиву: ";
-                for (int i = 0; i < N; ++i) {
-                    cin >> array[i];
-                }
-
-                cout << "Масив у порядку зростання індексів: ";
-                for (int i = 0; i < N; ++i) {
-                    cout << array[i] << " ";
-                }
-                cout << endl;
-
-                if (isGeometricProgression(array)) {
-                    int ratio = array[1] / array[0];
-                    cout << "Елементи утворюють геометричну прогресію. Знаменник прогресії: " << ratio << endl;
-                } else {
-                    cout << "Елементи не утворюють геометричну прогресію. Знаменник не визначено." << endl;
-                }
+                // Код для перевірки геометричної прогресії у користувацького введення
                 break;
             }
             case 2: {
-                int n;
-                cout << "Введіть розмір масиву: ";
-                cin >> n;
-
-                vector<int> arr(n);
-
-                cout << "Введіть елементи масиву:\n";
-                for (int i = 0; i < n; ++i) {
-                    cin >> arr[i];
-                }
-
-                cout << "Початковий масив: ";
-                for (int i : arr) {
-                    cout << i << " ";
-                }
-                cout << "\n";
-
-                processArray(arr);
+                // Код для обробки масиву у користувацького введення
                 break;
             }
             case 0:
@@ -126,8 +89,4 @@ int main() {
 
     return 0;
 }
-
-
-
-
 
